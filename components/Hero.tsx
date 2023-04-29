@@ -4,12 +4,16 @@ import BackgroundCircles from "./BackgroundCircles";
 import heroImg from "../assets/heroImg.jpg";
 import Image from "next/image";
 import Link from "next/link";
+import { PageInfo } from "@/typings";
+import { urlFor } from "@/sanity";
 
-type Props = {};
+type Props = {
+  pageInfo: PageInfo
+};
 
-export default function Hero({}: Props) {
+export default function Hero({pageInfo}: Props) {
   const [text, count] = useTypewriter({
-    words: ["Vivek", "Full Stack Web Developer", "Web Designer"],
+    words: [`${pageInfo?.name.split(" ").at(0)}`, "Full Stack Developer", "Web Designer"],
     loop: true,
     delaySpeed: 2000,
   });
@@ -18,13 +22,16 @@ export default function Hero({}: Props) {
     <div className="h-full flex flex-col space-y-8 items-center justify-center text-center overflow-hidden">
       <BackgroundCircles />
       <Image
-        src={heroImg}
+        src={urlFor(pageInfo?.heroImage).url()}
         alt="heroImg"
-        className="w-32 aspect-square rounded-full object-cover "
+        width={120}
+        height={120}
+        rel="preload"
+        className="w-auto h-auto rounded-full object-cover"
       />
       <div className="z-20">
         <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[8px]">
-          Software Engineer
+          {pageInfo?.role}
         </h2>
         <p className="text-4xl lg:text-5xl font-semibold px-10">
           Hi, I am <span className="text-gray-400">{text}</span>

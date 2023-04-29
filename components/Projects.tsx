@@ -1,10 +1,13 @@
 import { motion } from "framer-motion";
 import React from "react";
 import ProjectCard from "./ProjectCard";
+import { Project } from "@/typings";
 
-type Props = {};
+type Props = {
+  projects:Project[]
+};
 
-function Projects({}: Props) {
+function Projects({projects}: Props) {
   return (
     <motion.div
       initial={{
@@ -22,11 +25,10 @@ function Projects({}: Props) {
         Projects
       </h2>
 
-      <div className="w-full flex space-x-5 overflow-x-scroll p-10 snap-mandatory snap-x mt-20 scrollbar-none">
-        <ProjectCard/>
-        <ProjectCard/>
-        <ProjectCard/>
-        <ProjectCard/>
+      <div className="w-full md:h-auto flex space-x-5 overflow-x-scroll p-10 snap-mandatory snap-x mt-20 scrollbar-none">
+        {projects.map((project) =>{
+          return <ProjectCard key={project?._id} project={project}/>  
+        })}
       </div>
     </motion.div>
   );

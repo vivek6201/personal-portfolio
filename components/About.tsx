@@ -1,8 +1,16 @@
+import { urlFor } from "@/sanity";
+import { PageInfo } from "@/typings";
 import { motion } from "framer-motion";
 import React from "react";
-type Props = {};
 
-export default function About({}: Props) {
+type Props = {
+  pageInfo:PageInfo
+};
+
+export default function About({pageInfo}: Props) {
+
+  
+
   return (
     <motion.div
       initial={{
@@ -33,17 +41,17 @@ export default function About({}: Props) {
         transition={{
           duration: 1.1,
         }}
-        src="https://avatars.githubusercontent.com/u/121503899?v=4"
+        src={urlFor(pageInfo?.profilePic).url()}
         className="w-52 -mb-28 md:mb-0 aspect-square rounded-full object-cover flex-shrink-0 md:w-64 xl:w-[500px]"
       />
 
       <motion.div 
       initial={{
-        x:500,
+        y:200,
         opacity:0
       }}
       whileInView={{
-        x:0,
+        y:0,
         opacity:1
       }}
       transition={{
@@ -54,18 +62,11 @@ export default function About({}: Props) {
         <h2 className="uppercase font-semibold text-gray-600 text-3xl mb-12">
           My Background
         </h2>
-        <p className="opacity-60">
-          Hey there! I am Vivek and I am a self taught Full Stack developer.
-        </p>
-        <p className="opacity-60">I am from Jamshedpur, Jharkhand</p>
-        <p className="opacity-60">
-          I completed my Bachelors in Computer Applicaion in July 2022 from
-          Netaji Shubhash Engineering College.
-        </p>
-        <p className="opacity-60">
-          I am Passionate about building application which solve real life
-          problems.
-        </p>
+        {
+          pageInfo?.backgroundInfo.split(".").map((data,index) =>{
+            return <p key={index} className="opacity-60">{data}</p>
+          })
+        }
       </motion.div>
     </motion.div>
   );

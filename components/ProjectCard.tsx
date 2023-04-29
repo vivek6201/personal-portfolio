@@ -1,12 +1,18 @@
+import { urlFor } from "@/sanity";
+import { Project } from "@/typings";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
+import { SocialIcon } from "react-social-icons";
 
-type Props = {};
+type Props = {
+  project: Project;
+};
 
-function ProjectCard({}: Props) {
+function ProjectCard({ project }: Props) {
   return (
-    <article className="flex flex-col rounded-lg items-center space-y-7 flex-shrink-0 w-[280px] md:w-[500px] xl:w-[700px] snap-start bg-[#292929] p-10 opacity-60 hover:opacity-100 transition-opacity duration-300">
+    <article className="flex flex-col rounded-lg items-center justify-evenly gap-y-5 flex-shrink-0 w-[280px] md:w-[500px] xl:w-[700px] snap-start bg-[#292929] p-10 opacity-60 hover:opacity-100 transition-opacity duration-300 h-[600px] md:h-auto">
       <motion.h2
         initial={{
           y: -100,
@@ -22,62 +28,40 @@ function ProjectCard({}: Props) {
         }}
         className="text-center uppercase font-bold text-gray-500 text-xl"
       >
-        Shopping Cart Application
+        {project?.title}
       </motion.h2>
       <div className="flex flex-col gap-y-4 relative">
-        <div className="flex gap-x-3">
-          <Image
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-            alt="text used"
-            width={20}
-            height={20}
-          />
-          <Image
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-            alt="text used"
-            width={20}
-            height={20}
-          />
-          <Image
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-            alt="text used"
-            width={20}
-            height={20}
-          />
-          <Image
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-            alt="text used"
-            width={20}
-            height={20}
-          />
+        <div className="flex gap-x-5">
+          {project.technologies.map((tech) => {
+            return (
+              <Image
+                key={tech._id}
+                src={urlFor(tech?.image).url()}
+                alt="text used"
+                width={40}
+                height={40}
+              />
+            );
+          })}
         </div>
         <p className="opacity-50 uppercase text-sm">
           Completed on <span></span>
         </p>
         <ul className="list-disc space-y-4 ml-5 text-base">
-          <li className="text-[14px] sm:text-base">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa at
-            magni omnis quod, ratione est saepe?{" "}
-          </li>
-          <li className="text-[14px] sm:text-base">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa at
-            magni omnis quod, ratione est saepe?{" "}
-          </li>
-          <li className="text-[14px] sm:text-base">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa at
-            magni omnis quod, ratione est saepe?{" "}
-          </li>
+          {
+            project.points.map((point,index) =>{
+              return <li key={index}>{point}</li>
+            })
+          }
         </ul>
 
         <div className="w-full flex gap-x-4 items-center mt-10">
-          <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500">
-            <button>View Source</button>
-          </a>
-          <a href="#" target="_blank" rel="noopener noreferrer">
+          <SocialIcon url={project.githubLink} bgColor="transparent" fgColor="gray"/>
+          <Link href={project.deployedLink} target="_blank" rel="noopener noreferrer">
             <button className="py-2 px-5 rounded-md bg-gray-400 text-white font-medium">
               Visit Project
             </button>
-          </a>
+          </Link>
         </div>
       </div>
     </article>
