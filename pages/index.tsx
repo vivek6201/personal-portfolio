@@ -24,7 +24,7 @@ type Props ={
 
 export default function Home({pageInfo,skills,socials,projects}: Props) {
   return (
-    <div className="bg-[rgb(36,36,36)] text-white h-screen w-full snap-y snap-mandatory overflow-y-scroll z-0 overflow-hidden scroll-smooth scrollbar-thin scrollbar- scrollbar-thumb-orange-400 ">
+    <div className="bg-[rgb(36,36,36)] text-white h-screen w-full snap-y snap-mandatory overflow-y-scroll z-0 overflow-hidden scroll-smooth md:scrollbar-thin md:scrollbar- scrollbar-thumb-orange-400 ">
       <Head>
         <title>Vivek - Portfolio</title>
       </Head>
@@ -50,6 +50,7 @@ export default function Home({pageInfo,skills,socials,projects}: Props) {
       <section id="contact" className="h-full w-full snap-start">
         <Contact />
       </section>
+
     </div>
   );
 }

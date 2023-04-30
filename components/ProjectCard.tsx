@@ -12,26 +12,12 @@ type Props = {
 
 function ProjectCard({ project }: Props) {
   return (
-    <article className="flex flex-col rounded-lg items-center justify-evenly gap-y-5 flex-shrink-0 w-[280px] md:w-[500px] xl:w-[700px] snap-start bg-[#292929] p-10 opacity-60 hover:opacity-100 transition-opacity duration-300 h-[600px] md:h-auto">
-      <motion.h2
-        initial={{
-          y: -100,
-          opacity: 0,
-        }}
-        whileInView={{
-          y: 0,
-          opacity: 1,
-        }}
-        viewport={{ once: true }}
-        transition={{
-          duration: 1.5,
-        }}
-        className="text-center uppercase font-bold text-gray-500 text-xl"
-      >
+    <article className="flex flex-col rounded-lg items-center justify-evenly gap-y-3 flex-shrink-0 w-[280px] md:w-[500px] xl:w-[600px] snap-start bg-[#292929] md:p-10 p-5 opacity-60 hover:opacity-100 transition-opacity duration-300 h-[500px]">
+      <h2 className="text-center uppercase font-bold text-gray-500 text-xl">
         {project?.title}
-      </motion.h2>
+      </h2>
       <div className="flex flex-col gap-y-4 relative">
-        <div className="flex gap-x-5">
+        <div className="flex gap-x-3 md:gap-x-5">
           {project.technologies.map((tech) => {
             return (
               <Image
@@ -47,17 +33,23 @@ function ProjectCard({ project }: Props) {
         <p className="opacity-50 uppercase text-sm">
           Completed on <span></span>
         </p>
-        <ul className="list-disc space-y-4 ml-5 text-base">
-          {
-            project.points.map((point,index) =>{
-              return <li key={index}>{point}</li>
-            })
-          }
+        <ul className="list-disc space-y-1 ml-5 text-base">
+          {project.points.map((point, index) => {
+            return <li key={index}>{point}</li>;
+          })}
         </ul>
 
-        <div className="w-full flex gap-x-4 items-center mt-10">
-          <SocialIcon url={project.githubLink} bgColor="transparent" fgColor="gray"/>
-          <Link href={project.deployedLink} target="_blank" rel="noopener noreferrer">
+        <div className="w-full flex gap-x-4 items-center md:mt-10">
+          <SocialIcon
+            url={project.githubLink}
+            bgColor="transparent"
+            fgColor="gray"
+          />
+          <Link
+            href={project.deployedLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <button className="py-2 px-5 rounded-md bg-gray-400 text-white font-medium">
               Visit Project
             </button>

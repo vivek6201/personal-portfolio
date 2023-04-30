@@ -3,6 +3,8 @@ import { MdEmail } from "react-icons/md";
 import { HiLocationMarker } from "react-icons/hi";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { motion } from "framer-motion";
+import { BsFillArrowUpSquareFill } from "react-icons/bs";
+import Link from "next/link";
 
 type Props = {};
 
@@ -37,24 +39,24 @@ export default function Contact({}: Props) {
       transition={{
         duration: 2,
       }}
-      className="h-full flex relative flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-around mx-auto items-center"
+      className="h-full py-16 flex relative flex-col text-center max-w-7xl px-3 xl:gap-y-12 md:px-10 justify-center mx-auto items-center"
     >
-      <h2 className="tracking-[15px] absolute top-24 uppercase text-gray-500 text-2xl">
+      <h2 className="tracking-[15px] mb-4 uppercase text-gray-500 text-2xl">
         Contact
       </h2>
 
-      <div className="flex flex-col space-y-10">
-        <h2 className="font-semibold text-2xl opacity-80 text-center">
+      <div className="flex flex-col space-y-4 md:space-y-10">
+        <h2 className="font-semibold text-xl md:text-2xl opacity-80 text-center">
           Have some work for me!!{" "}
           <span className="text-orange-400">Lets Talk.</span>
         </h2>
 
-        <div className="space-y-2 `">
-          <div className="flex gap-x-4 text-xl text-white items-center justify-center">
+        <div className="md:space-y-2 `">
+          <div className="flex gap-x-4 md:text-xl text-white items-center justify-center">
             <MdEmail className="text-xl text-orange-400 animate-pulse" />
             <p>gvicky45678@gmail.com</p>
           </div>
-          <div className="flex gap-x-4 text-xl text-white items-center justify-center">
+          <div className="flex gap-x-4 md:text-xl text-white items-center justify-center">
             <HiLocationMarker className="text-xl text-orange-400 animate-pulse" />
             <p>Jamshedpur, Jharkhand</p>
           </div>
@@ -98,12 +100,13 @@ export default function Contact({}: Props) {
           />
           <button
             type="submit"
-            className="bg-yellow-500 font-bold text-black py-3 rounded-md text-lg uppercase"
+            className="bg-yellow-500 font-bold text-black py-3 rounded-md md:text-lg uppercase"
           >
             Submit
           </button>
         </form>
       </div>
+
     </motion.div>
   );
 }
