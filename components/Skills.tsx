@@ -2,8 +2,6 @@ import React from "react";
 import Skill from "./Skill";
 import { motion } from "framer-motion";
 import { Skills } from "@/typings";
-import Link from "next/link";
-import { BsFillArrowUpSquareFill } from "react-icons/bs";
 
 type Props = {
   skills: Skills[];

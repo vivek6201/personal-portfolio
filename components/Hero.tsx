@@ -1,11 +1,10 @@
 import React from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import BackgroundCircles from "./BackgroundCircles";
-import heroImg from "../assets/heroImg.jpg";
 import Image from "next/image";
 import Link from "next/link";
 import { PageInfo } from "@/typings";
-import { urlFor } from "@/sanity";
+import { urlFor } from "@/lib/sanity.client";
 
 type Props = {
   pageInfo: PageInfo

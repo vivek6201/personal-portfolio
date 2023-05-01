@@ -1,9 +1,8 @@
-import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 import jslogo from "../assets/jsLogo.png";
 import { Skills } from "@/typings";
-import { urlFor } from "@/sanity";
+import { urlFor } from "@/lib/sanity.client";
 
 type Props = {
   skill: Skills;

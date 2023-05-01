@@ -1,9 +1,7 @@
-import { urlFor } from "@/sanity";
+import { urlFor } from "@/lib/sanity.client";
 import { PageInfo } from "@/typings";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import React from "react";
-import { BsFillArrowUpSquareFill } from "react-icons/bs";
 
 type Props = {
   pageInfo: PageInfo;

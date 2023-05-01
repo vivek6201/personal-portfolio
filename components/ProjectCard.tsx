@@ -1,4 +1,4 @@
-import { urlFor } from "@/sanity";
+import { urlFor } from "@/lib/sanity.client";
 import { Project } from "@/typings";
 import { motion } from "framer-motion";
 import Image from "next/image";
