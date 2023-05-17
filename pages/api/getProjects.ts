@@ -19,6 +19,5 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   const project: Project[] = await sanityClient.fetch(query);
-  res.setHeader("Cache-Control", "s-maxage=10, stale-while-revalidate");
   res.status(200).json({ project });
 }

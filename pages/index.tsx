@@ -72,6 +72,5 @@ export const getStaticProps: GetStaticProps = async (context) => {
     //- When a request comes in
     //- Atmost once every 10 secs
     revalidate:10,
-    useCdn:false
   };
 };
