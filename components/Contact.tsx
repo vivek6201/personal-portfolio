@@ -3,10 +3,11 @@ import { MdEmail } from "react-icons/md";
 import { HiLocationMarker } from "react-icons/hi";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { motion } from "framer-motion";
-import { BsFillArrowUpSquareFill } from "react-icons/bs";
-import Link from "next/link";
+import { PageInfo } from "@/typings";
 
-type Props = {};
+type Props = {
+  pageInfo:PageInfo
+};
 
 type Inputs = {
   fname: string;
@@ -16,7 +17,7 @@ type Inputs = {
   message: string;
 };
 
-export default function Contact({}: Props) {
+export default function Contact({pageInfo}: Props) {
   const {
     register,
     handleSubmit,
@@ -25,7 +26,7 @@ export default function Contact({}: Props) {
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     console.log(data);
-    window.location.href = `mailto:gvicky45678@gmail.com?subject=${data.subject}&body=${data.message}`;
+    window.location.href = `mailto:${pageInfo?.email}?subject=${data.subject}&body=${data.message}`;
   };
 
   return (
@@ -54,11 +55,11 @@ export default function Contact({}: Props) {
         <div className="md:space-y-2 `">
           <div className="flex gap-x-4 md:text-xl text-white items-center justify-center">
             <MdEmail className="text-xl text-orange-400 animate-pulse" />
-            <p>gvicky45678@gmail.com</p>
+            <p>{pageInfo?.email}</p>
           </div>
           <div className="flex gap-x-4 md:text-xl text-white items-center justify-center">
             <HiLocationMarker className="text-xl text-orange-400 animate-pulse" />
-            <p>Jamshedpur, Jharkhand</p>
+            <p>{pageInfo?.address}</p>
           </div>
         </div>
 

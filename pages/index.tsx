@@ -46,7 +46,7 @@ export default function Home({pageInfo,skills,socials,projects}: Props) {
       </section>
 
       <section id="contact" className="h-full w-full snap-start">
-        <Contact />
+        <Contact pageInfo={pageInfo}/>
       </section>
 
     </div>
